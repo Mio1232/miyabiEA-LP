@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>みやびEA — あなたの代わりに、お金が働く</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FDFAF5;--bg-warm:#FFF8F0;--bg-white:#FFFFFF;--bg-sakura:rgba(245,190,200,0.08);--bg-sakura-mid:rgba(245,190,200,0.15);
+  --border:#F0E8E0;--border-sakura:rgba(220,140,160,0.25);
+  --text:#2E2520;--text-sub:#6B5E55;--text-dim:#A09488;
+  --sakura:#DC8CA0;--sakura-deep:#C46880;--sakura-light:#F5C0CC;--sakura-pale:#FDE8EE;
+  --gold:#B8922E;--gold-light:#D4AA40;--gold-pale:rgba(184,146,46,0.08);--gold-border:rgba(184,146,46,0.2);
+  --green:#3A9E6E;--green-bg:rgba(58,158,110,0.08);--green-border:rgba(58,158,110,0.2);
+  --red-soft:#D46A6A;
+  --shadow-sm:0 1px 4px rgba(46,37,32,0.06);--shadow-md:0 4px 16px rgba(46,37,32,0.07);
+  --font-display:'Zen Maru Gothic',sans-serif;--font-body:'Noto Sans JP',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.85;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.container{max-width:700px;margin:0 auto;padding:0 20px}
+.section{padding:72px 0;position:relative}
+.section-band{background:var(--bg-warm);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.section-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--sakura-deep);margin-bottom:14px}
+.section-tag::before{content:'🌸';font-size:13px}
+.section-title{font-family:var(--font-display);font-size:23px;font-weight:700;line-height:1.6;margin-bottom:14px;color:var(--text)}
+.section-sub{font-size:14px;color:var(--text-sub);line-height:1.85;margin-bottom:36px}
+.sakura-bg{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;overflow:hidden}
+.petal{position:absolute;width:8px;height:8px;background:var(--sakura-light);border-radius:50% 0 50% 0;opacity:.12;animation:fall linear infinite}
+@keyframes fall{0%{transform:translateY(-20px) rotate(0);opacity:0}10%{opacity:.12}90%{opacity:.06}100%{transform:translateY(100vh) rotate(360deg);opacity:0}}
+
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:48px 0;background:linear-gradient(180deg,#FFF5EE 0%,var(--bg) 100%)}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 20%,rgba(245,192,204,0.15) 0%,transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(212,170,64,0.06) 0%,transparent 50%)}
+.hero-content{position:relative;z-index:1;text-align:center}
+.hero-avatars{display:flex;justify-content:center;gap:16px;margin-bottom:28px}
+.hero-avatar{width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid var(--bg-white);box-shadow:0 4px 16px rgba(220,140,160,0.2)}
+.hero-avatar-label{font-size:10px;color:var(--text-dim);margin-top:4px;text-align:center}
+.hero-badge{display:inline-block;padding:5px 16px;border:1px solid var(--border-sakura);border-radius:20px;font-size:11px;font-weight:500;letter-spacing:.1em;color:var(--sakura-deep);margin-bottom:24px;background:var(--sakura-pale)}
+.hero h1{font-family:var(--font-display);font-size:26px;font-weight:700;line-height:1.65;margin-bottom:12px;color:var(--text)}
+.hero h1 .accent{color:var(--sakura-deep)}
+.hero h1 .sub{display:block;font-size:14px;font-weight:400;color:var(--text-sub);margin-top:10px;font-family:var(--font-body)}
+.hero-stats{display:flex;justify-content:center;gap:28px;margin:32px 0;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat-value{font-family:var(--font-display);font-size:32px;font-weight:900;color:var(--gold);line-height:1.2}
+.hero-stat-label{font-size:10px;color:var(--text-dim);margin-top:3px}
+.hero-note{font-size:11px;color:var(--text-dim);margin-top:20px;line-height:1.7}
+
+.cta-btn{display:inline-block;padding:15px 44px;background:linear-gradient(135deg,var(--sakura),var(--sakura-deep));color:#fff;font-family:var(--font-display);font-size:15px;font-weight:700;text-decoration:none;border-radius:50px;border:none;cursor:pointer;transition:all .3s ease;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(220,140,160,0.25)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(220,140,160,0.35)}
+.cta-btn::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transition:left .6s ease}
+.cta-btn:hover::after{left:100%}
+.cta-btn-note{display:block;font-size:11px;font-weight:500;opacity:.85;margin-top:3px}
+.cta-section{text-align:center;padding:40px 0}
+.cta-section .hint{font-size:12px;color:var(--text-dim);margin-top:12px}
+
+.problem-card{padding:18px;background:var(--bg-white);border:1px solid var(--border);border-radius:14px;margin-bottom:10px;display:flex;align-items:flex-start;gap:14px;box-shadow:var(--shadow-sm)}
+.problem-icon{flex-shrink:0;width:36px;height:36px;border-radius:10px;background:rgba(212,106,106,0.08);display:flex;align-items:center;justify-content:center;font-size:17px}
+.problem-text{font-size:14px;color:var(--text-sub);line-height:1.75}
+.problem-text strong{color:var(--text);font-weight:600}
+.cycle-box{margin-top:28px;padding:24px;background:rgba(212,106,106,0.04);border:1px solid rgba(212,106,106,0.12);border-radius:16px;text-align:center}
+.cycle-box h4{font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--red-soft);margin-bottom:16px}
+.cycle-flow{display:flex;flex-direction:column;align-items:center;gap:4px}
+.cycle-step{font-size:13px;color:var(--text-sub);padding:4px 16px;background:rgba(212,106,106,0.06);border-radius:6px}
+.cycle-arrow{color:var(--text-dim);font-size:11px}
+.cycle-bottom{margin-top:20px;font-size:14px;color:var(--text-sub);line-height:1.8}
+.cycle-bottom strong{color:var(--text)}
+
+.solution-box{padding:28px;background:linear-gradient(135deg,var(--sakura-pale),rgba(212,170,64,0.06));border:1px solid var(--border-sakura);border-radius:18px;text-align:center;margin-bottom:28px}
+.solution-box h3{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--sakura-deep);margin-bottom:10px}
+.solution-box p{font-size:14px;color:var(--text-sub);line-height:1.8}
+.feature-grid{display:flex;flex-direction:column;gap:10px}
+.feat-card{padding:20px;background:var(--bg-white);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-sm)}
+.feat-card-icon{font-size:22px;margin-bottom:10px}
+.feat-card h4{font-size:14px;font-weight:700;margin-bottom:4px;color:var(--text)}
+.feat-card p{font-size:13px;color:var(--text-sub);line-height:1.75}
+
+.perf-hero{text-align:center;padding:28px;background:linear-gradient(135deg,var(--gold-pale),rgba(184,146,46,0.02));border:1px solid var(--gold-border);border-radius:18px;margin-bottom:20px}
+.perf-hero-value{font-family:var(--font-display);font-size:38px;font-weight:900;color:var(--gold);line-height:1.2}
+.perf-hero-label{font-size:12px;color:var(--text-dim);margin-top:4px}
+.perf-sub-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:20px}
+.perf-sub-box{text-align:center;padding:14px;background:var(--bg-white);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-sm)}
+.perf-sub-val{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--gold)}
+.perf-sub-label{font-size:10px;color:var(--text-dim);margin-top:2px}
+.perf-table-wrap{border-radius:14px;overflow:hidden;border:1px solid var(--border);margin-bottom:16px;box-shadow:var(--shadow-sm)}
+.perf-table{width:100%;border-collapse:collapse}
+.perf-table th{background:var(--bg-warm);padding:10px 14px;font-size:11px;font-weight:600;color:var(--text-dim);text-align:left}
+.perf-table td{padding:8px 14px;font-size:13px;color:var(--text-sub);border-top:1px solid var(--border);background:var(--bg-white)}
+.perf-table tr:nth-child(even) td{background:var(--bg)}
+.perf-table .amt{font-family:var(--font-display);font-weight:600;color:var(--green)}
+.perf-table tfoot td{background:var(--gold-pale);border-top:2px solid var(--gold-border);font-weight:700;font-size:14px}
+.perf-table tfoot .amt{font-size:17px;font-weight:900;color:var(--gold)}
+.perf-note{font-size:12px;color:var(--text-dim);padding:14px;background:var(--bg-white);border:1px solid var(--border);border-radius:12px;line-height:1.75}
+.perf-note strong{color:var(--text-sub)}
+
+.testi-card{padding:22px;background:var(--bg-white);border:1px solid var(--border);border-radius:16px;margin-bottom:12px;position:relative;box-shadow:var(--shadow-sm)}
+.testi-card::before{content:'"';position:absolute;top:8px;left:18px;font-family:var(--font-display);font-size:44px;color:var(--sakura-light);line-height:1;opacity:.6}
+.testi-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.testi-ava{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--sakura-light),var(--gold-light));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:15px;font-weight:700;color:#fff;flex-shrink:0}
+.testi-meta h4{font-size:13px;font-weight:600;color:var(--text)}
+.testi-meta span{font-size:11px;color:var(--text-dim)}
+.testi-body{font-size:13px;color:var(--text-sub);line-height:1.8;margin-bottom:12px}
+.testi-result{display:inline-block;padding:5px 12px;background:var(--green-bg);border:1px solid var(--green-border);border-radius:6px;font-size:12px;font-weight:600;color:var(--green)}
+
+/* Market compare */
+.mkt-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+.mkt-card{padding:20px;background:var(--bg-white);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-sm);position:relative}
+.mkt-card.recommended{border-color:var(--sakura-deep);border-width:2px;background:linear-gradient(180deg,var(--sakura-pale) 0%,var(--bg-white) 40%)}
+.mkt-badge{position:absolute;top:-10px;right:16px;padding:3px 12px;background:linear-gradient(135deg,var(--sakura),var(--sakura-deep));color:#fff;font-family:var(--font-display);font-size:10px;font-weight:700;border-radius:10px;letter-spacing:.05em}
+.mkt-card h4{font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
+.mkt-card .mkt-price{font-family:var(--font-display);font-size:22px;font-weight:900;color:var(--sakura-deep);margin:8px 0}
+.mkt-card .mkt-price.other{color:var(--text-dim);font-size:18px}
+.mkt-card .mkt-features{display:flex;flex-direction:column;gap:5px;margin-top:10px}
+.mkt-feat{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text-sub)}
+.mkt-feat .ic{flex-shrink:0;font-size:13px}
+.mkt-card .mkt-note{font-size:11px;color:var(--text-dim);margin-top:10px;padding-top:8px;border-top:1px solid var(--border)}
+
+/* Solid highlight */
+.solid-highlight{padding:24px;background:linear-gradient(135deg,rgba(184,146,46,0.06),rgba(220,140,160,0.06));border:2px solid var(--gold-border);border-radius:18px;text-align:center;margin-top:24px}
+.solid-highlight h3{font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--gold);margin-bottom:8px}
+.solid-highlight p{font-size:13px;color:var(--text-sub);line-height:1.8}
+
+.compare-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.compare-card{padding:18px;background:var(--bg-white);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-sm)}
+.compare-card.ea{border-color:var(--border-sakura);background:linear-gradient(180deg,var(--sakura-pale),var(--bg-white))}
+.compare-card h4{font-family:var(--font-display);font-size:12px;font-weight:700;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--text-sub)}
+.compare-card.ea h4{color:var(--sakura-deep);border-color:var(--border-sakura)}
+.cmp-item{display:flex;align-items:flex-start;gap:6px;font-size:11px;color:var(--text-sub);margin-bottom:6px;line-height:1.6}
+.cmp-item .ic{flex-shrink:0;font-size:12px}
+
+.diff-item{padding:20px;background:var(--bg-white);border:1px solid var(--border);border-radius:14px;margin-bottom:10px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--shadow-sm)}
+.diff-num{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--sakura-pale);border:1px solid var(--border-sakura);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:13px;font-weight:800;color:var(--sakura-deep)}
+.diff-body h4{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
+.diff-body p{font-size:13px;color:var(--text-sub);line-height:1.75}
+
+.step-item{display:flex;gap:18px;margin-bottom:28px}
+.step-line{flex-shrink:0;display:flex;flex-direction:column;align-items:center;width:38px}
+.step-dot{width:38px;height:38px;border-radius:50%;background:var(--sakura-pale);border:2px solid var(--border-sakura);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--sakura-deep);flex-shrink:0}
+.step-conn{width:2px;flex:1;background:var(--border);margin:5px 0}
+.step-body{flex:1;padding-top:5px}
+.step-body h4{font-size:14px;font-weight:700;margin-bottom:4px;color:var(--text)}
+.step-body p{font-size:13px;color:var(--text-sub);line-height:1.75}
+
+.faq-item{border-bottom:1px solid var(--border);padding:18px 0}
+.faq-item:first-child{border-top:1px solid var(--border)}
+.faq-q{display:flex;align-items:flex-start;gap:8px;cursor:pointer;font-size:14px;font-weight:600;color:var(--text);line-height:1.6}
+.faq-q .qm{flex-shrink:0;color:var(--sakura-deep);font-family:var(--font-display);font-size:13px;font-weight:800;width:22px}
+.faq-q .tgl{flex-shrink:0;margin-left:auto;color:var(--text-dim);font-size:16px;transition:transform .3s}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;padding-left:30px}
+.faq-a.open{max-height:300px;padding-top:10px}
+.faq-a p{font-size:13px;color:var(--text-sub);line-height:1.8}
+
+/* Pricing 3 plans */
+.plan-grid{display:flex;flex-direction:column;gap:14px}
+.plan-card{padding:24px;background:var(--bg-white);border:1px solid var(--border);border-radius:18px;position:relative;box-shadow:var(--shadow-sm)}
+.plan-card.best{border:2px solid var(--gold);background:linear-gradient(180deg,rgba(184,146,46,0.04) 0%,var(--bg-white) 30%);box-shadow:var(--shadow-md)}
+.plan-card.best::before{content:'🌸 一番おすすめ';position:absolute;top:-12px;left:50%;transform:translateX(-50%);padding:4px 16px;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#fff;font-family:var(--font-display);font-size:11px;font-weight:700;border-radius:12px;white-space:nowrap}
+.plan-name{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--text);margin-bottom:2px}
+.plan-desc{font-size:12px;color:var(--text-dim);margin-bottom:10px}
+.plan-price{font-family:var(--font-display);font-size:36px;font-weight:900;line-height:1.1}
+.plan-price span{font-size:14px;font-weight:500;color:var(--text-dim)}
+.plan-card.best .plan-price{color:var(--gold)}
+.plan-card:not(.best) .plan-price{color:var(--sakura-deep);font-size:30px}
+.plan-includes{margin:16px 0;display:flex;flex-direction:column;gap:6px}
+.plan-inc{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text-sub)}
+.plan-inc .ck{color:var(--green);font-size:13px;flex-shrink:0}
+.plan-inc .bonus{color:var(--gold);font-weight:600}
+.plan-card .cta-btn{width:100%;padding:13px 20px;font-size:14px}
+
+.sim-grid{display:flex;flex-direction:column;gap:8px;margin-top:20px}
+.sim-row{padding:14px 16px;background:var(--bg-white);border:1px solid var(--border);border-radius:12px;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow-sm)}
+.sim-row .lab{font-size:12px;color:var(--text-sub)}
+.sim-row .lab small{display:block;font-size:10px;color:var(--text-dim)}
+.sim-row .val{font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--gold)}
+
+.profile-card{padding:24px;background:var(--bg-white);border:1px solid var(--border);border-radius:18px;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+.profile-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.profile-img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid var(--bg-white);box-shadow:0 4px 12px rgba(220,140,160,0.15);flex-shrink:0}
+.profile-name h3{font-family:var(--font-display);font-size:16px;font-weight:700}
+.profile-name span{font-size:11px;color:var(--sakura-deep)}
+.profile-text{font-size:13px;color:var(--text-sub);line-height:1.85}
+.profile-text p{margin-bottom:12px}
+.profile-text p:last-child{margin-bottom:0}
+
+.footer{padding:36px 0;text-align:center;border-top:1px solid var(--border);background:var(--bg-warm)}
+.footer p{font-size:10px;color:var(--text-dim);line-height:1.8}
+.footer-brand{font-family:var(--font-display);font-size:13px;color:var(--text-dim);margin-bottom:8px}
+
+/* App section */
+.app-box{padding:24px;background:var(--bg-white);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow-sm);margin-bottom:12px;display:flex;gap:14px;align-items:flex-start}
+.app-box-icon{flex-shrink:0;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--sakura-pale),rgba(184,146,46,0.08));display:flex;align-items:center;justify-content:center;font-size:20px}
+.app-box h4{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
+.app-box p{font-size:13px;color:var(--text-sub);line-height:1.75}
+.app-ecosystem{margin-top:24px;padding:22px;background:linear-gradient(135deg,var(--sakura-pale),var(--gold-pale));border:1px solid var(--border-sakura);border-radius:16px;text-align:center}
+.app-ecosystem h4{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--sakura-deep);margin-bottom:8px}
+.app-ecosystem p{font-size:13px;color:var(--text-sub);line-height:1.8}
+.app-ecosystem .eco-items{display:flex;justify-content:center;gap:12px;margin:14px 0;flex-wrap:wrap}
+.eco-chip{padding:6px 14px;background:var(--bg-white);border:1px solid var(--border);border-radius:20px;font-family:var(--font-display);font-size:12px;font-weight:600;color:var(--text)}
+.eco-plus{font-size:16px;color:var(--sakura);font-weight:700;display:flex;align-items:center}
+.payment-note{margin-top:16px;padding:16px;background:var(--bg-white);border:1px solid var(--border);border-radius:12px;text-align:center;box-shadow:var(--shadow-sm)}
+.payment-note .pay-badges{display:flex;justify-content:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.pay-badge{padding:4px 12px;border-radius:6px;font-size:11px;font-weight:600}
+.pay-badge.cc{background:rgba(74,142,255,0.08);color:#4a8eff;border:1px solid rgba(74,142,255,0.2)}
+.pay-badge.bank{background:var(--gold-pale);color:var(--gold);border:1px solid var(--gold-border)}
+.pay-badge.split{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+
+.plan-card.soon{opacity:.85}
+.plan-card.soon .cta-btn{background:linear-gradient(135deg,var(--text-dim),var(--text-sub));cursor:default;box-shadow:none}
+.plan-card.soon .cta-btn:hover{transform:none;box-shadow:none}
+.soon-badge{display:inline-block;padding:3px 10px;background:rgba(184,146,46,0.1);border:1px solid var(--gold-border);border-radius:8px;font-family:var(--font-display);font-size:10px;font-weight:700;color:var(--gold);margin-bottom:8px}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.reveal.v{opacity:1;transform:translateY(0)}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;padding:10px 20px;background:rgba(253,250,245,0.95);backdrop-filter:blur(12px);border-top:1px solid var(--border);z-index:100;text-align:center;transform:translateY(100%);transition:transform .4s ease}
+.sticky.show{transform:translateY(0)}
+.sticky .cta-btn{width:100%;max-width:380px;padding:13px 20px;font-size:14px}
+
+@media(min-width:640px){
+  .hero h1{font-size:32px}
+  .section-title{font-size:26px}
+  .feature-grid{display:grid;grid-template-columns:1fr 1fr}
+  .container{padding:0 32px}
+  .perf-sub-row{grid-template-columns:1fr 1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="sakura-bg" id="sakuraBg"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-avatars">
+        <div style="text-align:center"><img class="hero-avatar" src="./images/mio_icon.png" alt="mio"><div class="hero-avatar-label">mio｜主宰</div></div>
+        <div style="text-align:center"><img class="hero-avatar" src="./images/miyabi_icon.jpg" alt="みやび"><div class="hero-avatar-label">みやび｜EA開発</div></div>
+      </div>
+      <div class="hero-badge">mio億トレ × みやびEA</div>
+      <h1>
+        仕事中も、寝ている間も。<br>あなたの代わりに<br>
+        <span class="accent">お金がお金を増やす。</span>
+        <span class="sub">元金融OL みやび が本気で作った、ゴールド専用EA</span>
+      </h1>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-value">+134<span style="font-size:16px">万円</span></div><div class="hero-stat-label">直近約1ヶ月（500万円口座）</div></div>
+        <div class="hero-stat"><div class="hero-stat-value">15〜25<span style="font-size:16px">%</span></div><div class="hero-stat-label">月利目安</div></div>
+        <div class="hero-stat"><div class="hero-stat-value">2<span style="font-size:16px">万円〜</span></div><div class="hero-stat-label">最低資金</div></div>
+      </div>
+      <a href="#pricing" class="cta-btn">みやびEA の詳細を見る 🌸<span class="cta-btn-note">まずは話を聞くだけでもOK</span></a>
+      <div class="hero-note">※投資に元本保証はありません。実績は過去の結果であり、将来を保証するものではありません。</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section section-band" id="problem">
+  <div class="container">
+    <div class="reveal"><div class="section-tag">Problem</div><h2 class="section-title">こんな悩み、<br>ありませんか？</h2></div>
+    <div class="reveal">
+      <div class="problem-card"><div class="problem-icon">⏰</div><div class="problem-text"><strong>仕事中にチャンスが来て、エントリーできない。</strong><br>帰宅後に見たら「あの時入っていれば…」の繰り返し。</div></div>
+      <div class="problem-card"><div class="problem-icon">😔</div><div class="problem-text"><strong>帰宅後は疲れて、冷静な判断ができない。</strong><br>「今日中に取らなきゃ」と焦って、根拠の薄いエントリー。</div></div>
+      <div class="problem-card"><div class="problem-icon">👶</div><div class="problem-text"><strong>家事や育児で、チャートを見る時間がない。</strong><br>子どもが寝てる隙にスマホを開いても、もうチャンスは過ぎている。</div></div>
+      <div class="problem-card"><div class="problem-icon">📉</div><div class="problem-text"><strong>知識はあるのに、結果が出ない。</strong><br>勉強はした。デモでは勝てた。でも実弾になると負ける。</div></div>
+    </div>
+    <div class="cycle-box reveal">
+      <h4>時間がない人が陥る悪循環</h4>
+      <div class="cycle-flow">
+        <div class="cycle-step">① チャンスを逃す</div><div class="cycle-arrow">↓</div>
+        <div class="cycle-step">②「次こそは」と焦る</div><div class="cycle-arrow">↓</div>
+        <div class="cycle-step">③ 根拠の薄いエントリー</div><div class="cycle-arrow">↓</div>
+        <div class="cycle-step">④ 負ける</div><div class="cycle-arrow">↓</div>
+        <div class="cycle-step">⑤ やる気を失う → 離脱…</div>
+      </div>
+      <div class="cycle-bottom">これはスキルの問題ではありません。<br><strong>ただ「時間がない」だけ。</strong></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-section"><a href="#pricing" class="cta-btn">この壁を越える方法を見る</a></div>
+
+<!-- SOLUTION -->
+<section class="section" id="solution">
+  <div class="container">
+    <div class="reveal"><div class="section-tag">Solution</div><h2 class="section-title">その悩み、<br>「仕組み」で解決できます。</h2></div>
+    <div class="solution-box reveal">
+      <h3>みやびEA（自動売買システム）とは</h3>
+      <p>あらかじめ設定したルール通りに、24時間自動でゴールド（XAUUSD）をトレードしてくれるプログラム。<br>あなたが寝ている間も、仕事中も、みやびEAが代わりにトレードしてくれます。</p>
+    </div>
+    <div class="feature-grid reveal">
+      <div class="feat-card"><div class="feat-card-icon">🕐</div><h4>24時間自動トレード</h4><p>チャートを見る必要なし。みやびEAがゴールドの相場を監視し、最適なタイミングでエントリー・決済します。</p></div>
+      <div class="feat-card"><div class="feat-card-icon">🧊</div><h4>感情に左右されない</h4><p>焦り、恐怖、欲。人間の感情がトレードを狂わせる原因を排除します。</p></div>
+      <div class="feat-card"><div class="feat-card-icon">🛡️</div><h4>リスク管理を徹底</h4><p>損切りラインを事前に設定。大きな損失を防ぐ仕組みが組み込まれています。</p></div>
+      <div class="feat-card"><div class="feat-card-icon">💰</div><h4>2万円から始められる</h4><p>最低資金2万円、推奨10万円から。少額でもスタートできるので、まずは小さく試せます。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PERFORMANCE -->
+<section class="section section-band" id="performance">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">Performance</div>
+      <h2 class="section-title">言葉ではなく、<br>数字で語ります。</h2>
+      <p class="section-sub">みやびが開発したゴールドEAの、500万円口座での直近約1ヶ月間（4/27〜5/29）の実績です。全て実際のフォワードテスト結果です。</p>
+    </div>
+    <div class="perf-hero reveal">
+      <div class="perf-hero-value">+1,344,513<span style="font-size:16px">円</span></div>
+      <div class="perf-hero-label">合計損益（約1ヶ月）</div>
+    </div>
+    <div class="perf-sub-row reveal">
+      <div class="perf-sub-box"><div class="perf-sub-val">24<span style="font-size:11px">日</span></div><div class="perf-sub-label">稼働日数</div></div>
+      <div class="perf-sub-box"><div class="perf-sub-val">+56,021<span style="font-size:10px">円</span></div><div class="perf-sub-label">1日平均</div></div>
+      <div class="perf-sub-box"><div class="perf-sub-val">15〜25<span style="font-size:10px">%</span></div><div class="perf-sub-label">月利目安</div></div>
+    </div>
+    <div class="perf-table-wrap reveal">
+      <table class="perf-table">
+        <thead><tr><th>日付</th><th>損益</th></tr></thead>
+        <tbody>
+          <tr><td>4/27（日）</td><td class="amt">+38,494円</td></tr>
+          <tr><td>4/28（月）</td><td class="amt">+130,062円</td></tr>
+          <tr><td>4/29（火）</td><td class="amt">+84,724円</td></tr>
+          <tr><td>4/30（水）</td><td class="amt">+75,617円</td></tr>
+          <tr><td>5/1（木）</td><td class="amt">+53,965円</td></tr>
+          <tr><td>5/5（月）</td><td class="amt">+42,495円</td></tr>
+          <tr><td>5/6（火）</td><td class="amt">+205,038円</td></tr>
+          <tr><td>5/7（水）</td><td class="amt">+84,188円</td></tr>
+          <tr><td>5/8（木）</td><td class="amt">+65,044円</td></tr>
+          <tr><td>5/11（日）</td><td class="amt">+41,128円</td></tr>
+          <tr><td>5/12（月）</td><td class="amt">+41,979円</td></tr>
+          <tr><td>5/13（火）</td><td class="amt">+21,139円</td></tr>
+          <tr><td>5/14（水）</td><td class="amt">+29,255円</td></tr>
+          <tr><td>5/15（木）</td><td class="amt">+61,803円</td></tr>
+          <tr><td>5/18（日）</td><td class="amt">+66,890円</td></tr>
+          <tr><td>5/19（月）</td><td class="amt">+48,772円</td></tr>
+          <tr><td>5/20（火）</td><td class="amt">+39,746円</td></tr>
+          <tr><td>5/21（水）</td><td class="amt">+29,788円</td></tr>
+          <tr><td>5/22（木）</td><td class="amt">+15,304円</td></tr>
+          <tr><td>5/25（日）</td><td class="amt">+13,043円</td></tr>
+          <tr><td>5/26（月）</td><td class="amt">+29,978円</td></tr>
+          <tr><td>5/27（火）</td><td class="amt">+39,657円</td></tr>
+          <tr><td>5/28（水）</td><td class="amt">+41,925円</td></tr>
+          <tr><td>5/29（木）</td><td class="amt">+44,479円</td></tr>
+        </tbody>
+        <tfoot><tr><td>合計</td><td class="amt">+1,344,513円</td></tr></tfoot>
+      </table>
+    </div>
+    <div class="perf-note reveal"><strong>正直にお伝えします。</strong><br>日によって金額に差があります。+205,038円の日もあれば、+13,043円の日もある。取引しない日もあります。EAが「条件に合わない」と判断すれば、無理にポジションは取りません。人間だと「今日もやらなきゃ」と焦るところを、EAは冷静に見送る。これが大事なんです。</div>
+  </div>
+</section>
+
+<div class="cta-section"><a href="#pricing" class="cta-btn">みやびEA の導入を相談する</a><div class="hint">無理に勧めることは一切ありません</div></div>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="voice">
+  <div class="container">
+    <div class="reveal"><div class="section-tag">Voice</div><h2 class="section-title">利用者の声</h2><p class="section-sub">実際にみやびEAを使っている方のリアルな声を紹介します。</p></div>
+    <div class="testi-card reveal"><div class="testi-head"><div class="testi-ava">T</div><div class="testi-meta"><h4>T さん</h4><span>30代男性 / IT企業勤務｜利用開始1週間</span></div></div><div class="testi-body">正直、半信半疑で始めました。でも初日から結果が出て驚きました。朝の通勤電車でスマホをチェックしたら、昨日の夜中にEAがトレードしてくれていて、もう利益が出てる。仕事中は完全にFXのことを忘れてましたが、帰宅して口座を見たらちゃんと増えてました。まだ1週間ですけど、この感覚を知ったら裁量だけに戻れないかもしれません。</div><div class="testi-result">1週間の収支：+6,400円（20万円口座）</div></div>
+    <div class="testi-card reveal"><div class="testi-head"><div class="testi-ava">M</div><div class="testi-meta"><h4>M さん</h4><span>30代女性 / 2児のママ｜利用開始1週間</span></div></div><div class="testi-body">10万円という少額から始めたので、大丈夫かなと不安でした。でも設定はみやびさんが画面共有で全部やってくれたし、私がやることは朝と夜にスマホで口座を見るだけ。子どもと公園で遊んでる間もEAが勝手に動いてくれてて、1週間で+3,200円。少額でもちゃんと増えるんだ…って感動しました。旦那にも見せちゃいました。笑</div><div class="testi-result">1週間の収支：+3,200円（10万円口座）</div></div>
+    <div class="testi-card reveal"><div class="testi-head"><div class="testi-ava">K</div><div class="testi-meta"><h4>K さん</h4><span>40代男性 / 営業職｜利用開始1週間</span></div></div><div class="testi-body">営業で外回りが多く、裁量では月マイナスが続いていて、正直FXを辞めようかと思ってました。最後にEAを試してみようと始めたら、1週間で+16,000円。移動中も商談中もEAが勝手にトレードしてくれてる。たった1週間でこの結果なら、1ヶ月後が楽しみです。もっと早く始めればよかった。</div><div class="testi-result">1週間の収支：+16,000円（50万円口座）</div></div>
+  </div>
+</section>
+
+<!-- MARKET COMPARE -->
+<section class="section section-band" id="market">
+  <div class="container">
+    <div class="reveal"><div class="section-tag">Market Compare</div><h2 class="section-title">他のEAと比べてみてください。</h2><p class="section-sub">世の中にはEAが溢れています。でも、みやびEAは価格・品質・サポート、全てにおいて自信があります。</p></div>
+    <div class="mkt-grid reveal">
+      <div class="mkt-card">
+        <h4>一般的なEA（ゴゴジャン等）</h4>
+        <div class="mkt-price other">約5万円</div>
+        <div class="mkt-features">
+          <div class="mkt-feat"><span class="ic" style="color:var(--red-soft)">×</span>購入後のサポートなし</div>
+          <div class="mkt-feat"><span class="ic" style="color:var(--red-soft)">×</span>コミュニティなし（一人で運用）</div>
+          <div class="mkt-feat"><span class="ic" style="color:var(--red-soft)">×</span>アップデートなし（売り切り）</div>
+          <div class="mkt-feat"><span class="ic" style="color:var(--red-soft)">×</span>ロジック非公開が多い</div>
+          <div class="mkt-feat"><span class="ic" style="color:var(--red-soft)">×</span>裁量支援ツールなし</div>
+        </div>
+        <div class="mkt-note">安いが、買った後は完全に自己責任。困っても誰にも聞けない。</div>
+      </div>
+      <div class="mkt-card">
+        <h4>高額EA（他社）</h4>
+        <div class="mkt-price other">30万円以上</div>
+        <div class="mkt-features">
+          <div class="mkt-feat"><span class="ic">△</span>サポートはあるが限定的</div>
+          <div class="mkt-feat"><span class="ic">△</span>コミュニティは小規模</div>
+          <div class="mkt-feat"><span class="ic">○</span>アップデートあり</div>
+          <div class="mkt-feat"><span class="ic" style="color:var(--red-soft)">×</span>裁量支援ツールなし</div>
+          <div class="mkt-feat"><span class="ic" style="color:var(--red-soft)">×</span>価格が高すぎて始めにくい</div>
+        </div>
+        <div class="mkt-note">品質は良いものもあるが、30万円以上は気軽に始められない。</div>
+      </div>
+      <div class="mkt-card">
+        <h4>みやびEA 単体プラン</h4>
+        <div class="mkt-price" style="color:var(--sakura-deep)">¥77,000</div>
+        <div class="mkt-features">
+          <div class="mkt-feat"><span class="ic" style="color:var(--green)">◎</span>みやびEA 永久利用</div>
+          <div class="mkt-feat"><span class="ic" style="color:var(--green)">◎</span>150名以上のDiscordコミュニティ</div>
+          <div class="mkt-feat"><span class="ic" style="color:var(--green)">◎</span>設定サポート・運用相談対応</div>
+          <div class="mkt-feat"><span class="ic" style="color:var(--green)">◎</span>継続的なアップデート</div>
+          <div class="mkt-feat"><span class="ic" style="color:var(--green)">◎</span>ロジック完全公開</div>
+          <div class="mkt-feat"><span class="ic">△</span>裁量支援ツールは別途</div>
+        </div>
+        <div class="mkt-note">ゴゴジャンと同等の価格帯で、サポート・コミュニティ付き。まずはEAだけ試したい方に。</div>
+      </div>
+      <div class="mkt-card recommended">
+        <div class="mkt-badge">おすすめ</div>
+        <h4>Solid Edge コンプリートプラン</h4>
+        <div class="mkt-price">¥165,000</div>
+        <div class="mkt-features">
+          <div class="mkt-feat"><span class="ic" style="color:var(--green)">◎</span><span class="bonus">みやびEA 永久利用付き</span></div>
+          <div class="mkt-feat"><span class="ic" style="color:var(--green)">◎</span><span class="bonus">mioEA 永久利用付き</span></div>
+          <div class="mkt-feat"><span class="ic" style="color:var(--green)">◎</span>Solid Edgeで裁量トレードも強化</div>
+          <div class="mkt-feat"><span class="ic" style="color:var(--green)">◎</span>150名以上のDiscordコミュニティ</div>
+          <div class="mkt-feat"><span class="ic" style="color:var(--green)">◎</span>設定サポート・運用相談・質問対応</div>
+          <div class="mkt-feat"><span class="ic" style="color:var(--green)">◎</span>継続的なアップデート</div>
+          <div class="mkt-feat"><span class="ic" style="color:var(--green)">◎</span>ロジック完全公開</div>
+        </div>
+        <div class="mkt-note">EA 2本 + 裁量インジケーターが全て揃って16.5万円。高額EA 1本より安く、サポートも圧倒的。</div>
+      </div>
+    </div>
+    <div class="solid-highlight reveal">
+      <h3>🌸 裁量も自動売買も、本気でやるなら</h3>
+      <p>みやびEA単体でも十分な実績がありますが、<strong style="color:var(--gold)">裁量トレードのスキルも同時に上げたいなら、Solid Edge インジケーターとの併用がおすすめ</strong>です。<br>Solid Edgeを購入すれば、みやびEA・mioEAも無料で利用可能。<br>自動売買で安定収益を作りながら、裁量で上乗せする「最強の二刀流」が実現します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENCE -->
+<section class="section" id="difference">
+  <div class="container">
+    <div class="reveal"><div class="section-tag">Difference</div><h2 class="section-title">みやびEAが<br>選ばれる理由。</h2></div>
+    <div class="diff-item reveal"><div class="diff-num">1</div><div class="diff-body"><h4>ロジック完全公開</h4><p>エントリー根拠・利確・損切りの全ロジックを購入者に公開。ブラックボックスにお金を預ける必要はありません。</p></div></div>
+    <div class="diff-item reveal"><div class="diff-num">2</div><div class="diff-body"><h4>フォワードテスト毎日公開</h4><p>過去データの最適化ではなく、実際のゴールド相場でのリアルタイム結果を毎日公開しています。</p></div></div>
+    <div class="diff-item reveal"><div class="diff-num">3</div><div class="diff-body"><h4>継続的なアップデート</h4><p>相場環境は変化するから、EAも進化させ続けます。「売って終わり」ではありません。</p></div></div>
+    <div class="diff-item reveal"><div class="diff-num">4</div><div class="diff-body"><h4>150名以上のコミュニティで徹底サポート</h4><p>mio億トレDiscordでいつでも質問可能。設定代行・運用相談・利用者同士の情報交換。一人で悩む必要はありません。</p></div></div>
+    <div class="diff-item reveal"><div class="diff-num">5</div><div class="diff-body"><h4>2万円から始められる手軽さ</h4><p>最低資金2万円、推奨10万円。高額な初期投資は不要。まずは小さく試して、実感してから資金を増やせます。</p></div></div>
+  </div>
+</section>
+
+<div class="cta-section"><a href="#pricing" class="cta-btn">プランを見る</a><div class="hint">設定サポート付き。パソコンが苦手でも大丈夫です。</div></div>
+
+<!-- STEPS -->
+<section class="section section-band" id="steps">
+  <div class="container">
+    <div class="reveal"><div class="section-tag">How to Start</div><h2 class="section-title">導入はたったの3ステップ</h2></div>
+    <div class="step-flow reveal">
+      <div class="step-item"><div class="step-line"><div class="step-dot">1</div><div class="step-conn"></div></div><div class="step-body"><h4>プランを選んでお申し込み</h4><p>購入用LINEからお好きなプランでお申し込み。お支払い完了後、EAファイルと設定マニュアルをお送りします。</p></div></div>
+      <div class="step-item"><div class="step-line"><div class="step-dot">2</div><div class="step-conn"></div></div><div class="step-body"><h4>初期設定（サポート付き）</h4><p>VPSの契約とEAの設定を、画面共有しながら一緒に行います。所要時間は約1時間。パソコンが苦手でも問題ありません。</p></div></div>
+      <div class="step-item"><div class="step-line"><div class="step-dot">3</div></div><div class="step-body"><h4>運用開始 🌸</h4><p>あとはみやびEAにお任せ。日常の確認はスマホだけでOK。朝と夜に口座をチェックするだけの生活が始まります。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="reveal"><div class="section-tag">FAQ</div><h2 class="section-title">よくある質問</h2></div>
+    <div class="reveal">
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span class="qm">Q.</span><span>初期資金はいくら必要ですか？</span><span class="tgl">+</span></div><div class="faq-a"><p>最低2万円から運用可能です。推奨は10万円以上。資金が多いほどリターンも大きくなりますが、まずは少額でお試しいただけます。</p></div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span class="qm">Q.</span><span>月利15〜25%って本当ですか？</span><span class="tgl">+</span></div><div class="faq-a"><p>直近の実績ベースでの目安です。相場環境により変動するため保証はできませんが、フォワードテストの結果を毎日公開しているので、ご自身の目で確認いただけます。</p></div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span class="qm">Q.</span><span>VPSって何ですか？費用は？</span><span class="tgl">+</span></div><div class="faq-a"><p>EAを24時間動かすための「仮想パソコン」です。月額1,500〜3,000円程度。設定もサポートします。</p></div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span class="qm">Q.</span><span>Solid EdgeインジケーターとmioEAの関係は？</span><span class="tgl">+</span></div><div class="faq-a"><p>Solid Edgeは裁量トレードの精度を上げるためのインジケーターです。mioEAはそのSolid Edgeのロジックを自動売買に落とし込んだEA版です。コンプリートプラン（税込165,000円）なら、Solid Edge・みやびEA・mioEAの3つ全てが使えます。</p></div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span class="qm">Q.</span><span>負ける日もありますか？</span><span class="tgl">+</span></div><div class="faq-a"><p>あります。日によって波があり、マイナスの日も出ます。ただし月トータルでプラスになる設計です。</p></div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span class="qm">Q.</span><span>途中でやめられますか？</span><span class="tgl">+</span></div><div class="faq-a"><p>いつでもEAを停止できます。縛りは一切ありません。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section section-band" id="pricing">
+  <div class="container">
+    <div class="reveal"><div class="section-tag">Plan</div><h2 class="section-title">あなたに合ったプランを<br>お選びください。</h2></div>
+    <div class="plan-grid reveal">
+
+      <!-- Solid Edge -->
+      <div class="plan-card best" style="margin-top:8px;">
+        <div class="plan-name">Solid Edge コンプリートプラン</div>
+        <div class="plan-desc">裁量 × 自動売買の最強セット</div>
+        <div class="plan-price"><span>¥</span>165,000<span>（税込）</span></div>
+        <div class="plan-includes">
+          <div class="plan-inc"><span class="ck">✓</span>Solid Edge インジケーター本体</div>
+          <div class="plan-inc"><span class="ck">✓</span><span class="bonus">みやびEA 永久利用 無料</span></div>
+          <div class="plan-inc"><span class="ck">✓</span><span class="bonus">mioEA 永久利用 無料</span></div>
+          <div class="plan-inc"><span class="ck">✓</span>初期設定サポート（画面共有）</div>
+          <div class="plan-inc"><span class="ck">✓</span>Discord購入者コミュニティ</div>
+          <div class="plan-inc"><span class="ck">✓</span>継続的なアップデート</div>
+          <div class="plan-inc"><span class="ck">✓</span>運用相談・質問対応</div>
+        </div>
+        <a href="https://lin.ee/ozkyeIM" class="cta-btn">このプランで始める 🌸<span class="cta-btn-note">裁量も自動売買も、全部揃う</span></a>
+      </div>
+
+      <!-- みやびEA 単体 -->
+      <div class="plan-card">
+        <div class="plan-name">みやびEA 単体プラン</div>
+        <div class="plan-desc">まずはEAだけ使いたい方に</div>
+        <div class="plan-price"><span>¥</span>77,000<span>（税込）</span></div>
+        <div class="plan-includes">
+          <div class="plan-inc"><span class="ck">✓</span>みやびEA 永久利用</div>
+          <div class="plan-inc"><span class="ck">✓</span>初期設定サポート（画面共有）</div>
+          <div class="plan-inc"><span class="ck">✓</span>Discord購入者コミュニティ</div>
+          <div class="plan-inc"><span class="ck">✓</span>継続的なアップデート</div>
+          <div class="plan-inc"><span class="ck">✓</span>運用相談・質問対応</div>
+        </div>
+        <a href="https://lin.ee/ozkyeIM" class="cta-btn" style="background:linear-gradient(135deg,var(--text-sub),var(--text));">このプランで始める<span class="cta-btn-note">自動売買をまず体験したい方に</span></a>
+      </div>
+
+      <!-- mioEA 単体 -->
+      <div class="plan-card soon">
+        <div class="soon-badge">🌸 近日販売開始</div>
+        <div class="plan-name">mioEA 単体プラン</div>
+        <div class="plan-desc">Solid Edgeインジケーターの自動売買（EA）版</div>
+        <div class="plan-price"><span>¥</span>77,000<span>（税込）</span></div>
+        <div class="plan-includes">
+          <div class="plan-inc"><span class="ck">✓</span>mioEA 永久利用</div>
+          <div class="plan-inc"><span class="ck">✓</span>Solid Edgeのロジックを自動売買に</div>
+          <div class="plan-inc"><span class="ck">✓</span>初期設定サポート（画面共有）</div>
+          <div class="plan-inc"><span class="ck">✓</span>Discord購入者コミュニティ</div>
+          <div class="plan-inc"><span class="ck">✓</span>継続的なアップデート</div>
+          <div class="plan-inc"><span class="ck">✓</span>運用相談・質問対応</div>
+        </div>
+        <span class="cta-btn" style="width:100%;text-align:center;background:linear-gradient(135deg,var(--text-dim),var(--text-sub));cursor:default;">販売開始までお待ちください<span class="cta-btn-note">販売開始時にLINEでご案内します</span></span>
+        <p style="font-size:11px;color:var(--text-dim);margin-top:10px;text-align:center;line-height:1.6;">※今すぐmioEAを使いたい方は、Solid Edgeコンプリートプランに含まれています</p>
+      </div>
+    </div>
+
+    <div class="payment-note reveal">
+      <div class="pay-badges">
+        <span class="pay-badge cc">💳 クレジットカード対応</span>
+        <span class="pay-badge bank">🏦 銀行振込対応</span>
+        <span class="pay-badge split">📅 月1万円〜分割OK</span>
+      </div>
+      <p style="font-size:12px;color:var(--text-sub);line-height:1.7;">クレジットカードなら<strong style="color:var(--text)">月々1万円からの分割払い</strong>にも対応しています。<br>まとまった金額が難しい方でも、無理なく始められます。</p>
+    </div>
+
+    <div class="reveal" style="margin-top:32px;">
+      <h3 style="font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:14px;">投資回収シミュレーション（みやびEA）</h3>
+      <p style="font-size:12px;color:var(--text-sub);margin-bottom:14px;line-height:1.7;">月利15〜25%を基に、口座資金別の月間リターン目安を試算。</p>
+      <div class="sim-grid">
+        <div class="sim-row"><div class="lab">10万円（推奨最低額）<small>月利20%の場合</small></div><div class="val">+約2万円/月</div></div>
+        <div class="sim-row"><div class="lab">30万円<small>月利20%の場合</small></div><div class="val">+約6万円/月</div></div>
+        <div class="sim-row"><div class="lab">100万円<small>月利20%の場合</small></div><div class="val">+約20万円/月</div></div>
+        <div class="sim-row"><div class="lab">500万円<small>月利20%の場合</small></div><div class="val">+約100万円/月</div></div>
+      </div>
+      <div class="perf-note" style="margin-top:14px;">※上記は月利20%で試算した目安です。実際の収益は相場環境により変動します。将来の利益を保証するものではありません。</div>
+    </div>
+  </div>
+</section>
+
+<!-- APP SYNERGY -->
+<section class="section section-band" id="app">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">App Synergy</div>
+      <h2 class="section-title">mio億トレアプリで、<br>さらに賢く運用する。</h2>
+      <p class="section-sub">みやびEAやSolid Edgeと併用することで、mio億トレアプリのAIがあなた専属のアドバイザーになります。</p>
+    </div>
+    <div class="app-box reveal">
+      <div class="app-box-icon">🤖</div>
+      <div>
+        <h4>AIがあなたの実績を分析</h4>
+        <p>アプリに記録した収支データをもとに、美桜Mio AIがあなたのトレード傾向を分析。「この通貨ペアが得意」「この時間帯に勝率が高い」など、自分では気づけないパターンを教えてくれます。</p>
+      </div>
+    </div>
+    <div class="app-box reveal">
+      <div class="app-box-icon">📊</div>
+      <div>
+        <h4>EA・インジの効率的な使い方を提案</h4>
+        <p>みやびEAの運用結果やSolid Edgeでの裁量成績をもとに、AIがより効率の良い使い方をアドバイス。「EAに任せる相場」と「裁量で攻める相場」の見極め方も、あなたのデータから導き出してくれます。</p>
+      </div>
+    </div>
+    <div class="app-box reveal">
+      <div class="app-box-icon">🎯</div>
+      <div>
+        <h4>投資戦略を一緒に考えてくれる</h4>
+        <p>資金管理の見直し、ロット調整のタイミング、リスクの取り方まで。あなたの資金量や目標に合わせた投資戦略を、AIが24時間いつでも相談に乗ってくれます。</p>
+      </div>
+    </div>
+    <div class="app-box reveal">
+      <div class="app-box-icon">💪</div>
+      <div>
+        <h4>メンタルケアもサポート</h4>
+        <p>連敗した時の落ち込み、利益が出た時の浮かれすぎ。トレーダーのメンタルに寄り添い、冷静な判断を取り戻すサポートもしてくれます。</p>
+      </div>
+    </div>
+    <div class="app-ecosystem reveal">
+      <h4>全部つながると、最強になる 🌸</h4>
+      <div class="eco-items">
+        <span class="eco-chip">みやびEA</span>
+        <span class="eco-plus">×</span>
+        <span class="eco-chip">Solid Edge</span>
+        <span class="eco-plus">×</span>
+        <span class="eco-chip">億トレアプリ</span>
+      </div>
+      <p>自動売買で安定収益を作り、インジケーターで裁量スキルを磨き、<br>アプリのAIが全てのデータを統合してあなたの成長を加速させる。<br><strong style="color:var(--sakura-deep)">この3つが揃った環境は、mio億トレにしかありません。</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- PROFILES -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="reveal"><div class="section-tag">About Us</div><h2 class="section-title">開発者について</h2></div>
+    <div class="profile-card reveal">
+      <div class="profile-head"><img class="profile-img" src="./images/miyabi_icon.jpg" alt="みやび"><div class="profile-name"><h3>みやび</h3><span>EA開発者 / 元金融OL → 専業トレーダー</span></div></div>
+      <div class="profile-text">
+        <p>金融系企業でOLとして働きながら、副業でFXを始めました。知識はあった。デモでは勝てた。でも「時間がない」という一点で何度もお金を失いました。</p>
+        <p>仕事中にチャンスを逃して悔しい思いをして、帰宅後に焦って大損して。その経験から「自分の代わりにトレードしてくれる仕組み」を本気で研究し、ゴールド専用のEAを開発しました。</p>
+        <p>このEAを提供している理由は、過去の自分と同じように「時間がなくて諦めていく人」をこれ以上見たくないから。売って終わりにするつもりは一切ありません。</p>
+      </div>
+    </div>
+    <div class="profile-card reveal">
+      <div class="profile-head"><img class="profile-img" src="./images/mio_icon.png" alt="mio"><div class="profile-name"><h3>美桜 mio</h3><span>mio億トレ コミュニティ主宰</span></div></div>
+      <div class="profile-text">
+        <p>mio億トレコミュニティの主宰。トレードの記録・振り返り・AIサポートが一体となったアプリと、150名以上が参加するDiscordコミュニティを運営しています。</p>
+        <p>みやびが開発したEAの品質と実績を信頼し、コミュニティメンバーに自信を持って提供しています。一人で悩まず、みんなで成長できる環境を一緒に作っていきましょう。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section" id="purchase">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <h2 class="section-title" style="margin-bottom:14px;">迷っているなら、<br>まずは話を聞いてください 🌸</h2>
+      <p style="font-size:14px;color:var(--text-sub);line-height:1.85;margin-bottom:28px;">無理に勧めることは一切ありません。<br>あなたの状況を聞いた上で、<br>どのプランが合うかを一緒に考えます。</p>
+      <a href="https://lin.ee/ozkyeIM" class="cta-btn" style="padding:17px 52px;font-size:16px;">購入・相談はこちら 🌸<span class="cta-btn-note">LINEで個別にご案内します</span></a>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:14px;">※ボタンをタップすると購入用LINEに移動します</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer-brand">mio億トレ × みやびEA</div><p>※当EAは投資助言・代理業に該当するものではありません。<br>※FX取引にはリスクが伴います。投資は自己責任でお願いいたします。<br>※掲載している実績は過去の運用結果であり、将来の利益を保証するものではありません。</p></div></footer>
+
+<div class="sticky" id="sticky"><a href="https://lin.ee/ozkyeIM" class="cta-btn">みやびEA の購入・相談はこちら 🌸</a></div>
+
+<script>
+(function(){const bg=document.getElementById('sakuraBg');for(let i=0;i<14;i++){const p=document.createElement('div');p.className='petal';p.style.left=Math.random()*100+'%';p.style.animationDuration=(8+Math.random()*12)+'s';p.style.animationDelay=Math.random()*10+'s';p.style.width=p.style.height=(5+Math.random()*6)+'px';bg.appendChild(p)}})();
+function toggleFaq(el){const a=el.querySelector('.faq-a'),t=el.querySelector('.tgl'),o=a.classList.contains('open');document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open'));document.querySelectorAll('.tgl').forEach(x=>x.textContent='+');if(!o){a.classList.add('open');t.textContent='−';}}
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');});},{threshold:.1,rootMargin:'0px 0px -30px 0px'});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const sticky=document.getElementById('sticky'),hero=document.querySelector('.hero');window.addEventListener('scroll',()=>{const hb=hero.getBoundingClientRect().bottom,pt=document.getElementById('purchase').getBoundingClientRect().top;sticky.classList.toggle('show',hb<0&&pt>window.innerHeight);});
+</script>
+</body>
+</html>
