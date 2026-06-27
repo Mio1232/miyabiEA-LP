@@ -249,7 +249,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
 .statband .stat-v small{font-size:.42em;font-weight:600;margin-left:2px}
 .statband .stat-v .pls{color:var(--sakura-deep)}
 .statband .stat-l{font-size:10.5px;color:var(--text-dim);margin-top:8px}
-.video{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;
+.video{position:relative;margin-top:clamp(34px,5vw,54px);width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;
   border:1px solid var(--border);box-shadow:0 30px 60px -34px rgba(120,90,70,.55);background:#1a1410}
 .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .video-note{font-size:11px;color:var(--text-dim);margin-top:12px}
@@ -351,6 +351,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
 .rec-chip .d{color:var(--text-dim);font-size:11px}
 .rec-chip b{color:var(--sakura-deep);font-weight:600;white-space:nowrap}
 .price-note{font-size:11.5px;color:var(--text-dim);margin-top:24px;text-align:center}
+.price-ask{font-family:var(--font-display);font-weight:700;color:var(--sakura-deep);font-size:clamp(19px,2.4vw,25px);margin:18px 0 2px;line-height:1.35}
+.price-ask small{display:block;font-size:.52em;font-weight:600;color:var(--text-dim);margin-top:7px;letter-spacing:.02em}
+.assure{margin:30px auto 0;max-width:600px;text-align:center;background:var(--sakura-pale);border:1px solid var(--border-sakura);border-radius:16px;padding:16px 24px;font-size:13.5px;color:var(--text-sub);line-height:1.8}
+.assure b{color:var(--sakura-deep);font-weight:600}
 
 /* FAQ */
 .faq{margin-top:44px;border-top:1px solid var(--border)}
@@ -552,8 +556,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
 <section class="sec sec--warm">
   <div class="wrap reveal">
     <div class="eyebrow"><span class="label">COMPARISON</span><span class="rule"></span></div>
-    <h2 class="sec-title">高いには、<span class="accent">理由がある</span>。</h2>
-    <p class="sec-lead">みやびEAは、無料EAでも、よくある高額EAでもありません。ゴールド1本への専門性と、導入後も続くサポート・改善。価格は、その積み重ねに対するものです。</p>
+    <h2 class="sec-title">選ばれるのには、<span class="accent">理由がある</span>。</h2>
+    <p class="sec-lead">みやびEAは、無料EAでも、よくある高額EAでもありません。ゴールド1本への専門性と、導入後も続くサポート・改善。<span class="em">価格以上の価値</span>を、この積み重ねでお返しします。</p>
     <div class="cmp-scroll">
       <table class="cmp">
         <thead><tr><th></th><th class="col-mine">みやびEA</th><th>一般的な無料EA</th><th>高額な海外EA</th></tr></thead>
@@ -596,29 +600,30 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
         <div class="ribbon">EA本体</div>
         <div class="pname">みやびEA</div>
         <div class="psub">ゴールド（XAUUSD）専用の自動売買EA。当コミュニティの主軸です。</div>
-        <div class="price">440,000<small>円（税込）</small></div>
+        <div class="price-ask">ご相談ください<small>価格はLINEにてご案内します</small></div>
         <ul>
           <li>みやびEA 本体（XAUUSD自動売買）</li>
           <li>みおEA<span class="badge">近日提供・購入者は無料</span></li>
           <li>初期設定の導入サポート</li>
           <li>Discordコミュニティへの参加</li>
         </ul>
-        <a href="#contact" class="cta">みやびEAについて相談する<span>まずは話を聞くだけでもOK</span></a>
+        <a href="https://lin.ee/OnkS3EV" target="_blank" rel="noopener" class="cta">無料で相談する<span>まずは話を聞くだけでもOK</span></a>
       </div>
       <div class="plan">
         <div class="pname">Solid Edge インジケーター</div>
         <div class="psub">EAで運用する資金を、自分の裁量でさらに増やす——「攻め」のインジケーター。</div>
-        <div class="price">150,000<small>円（税込）</small></div>
+        <div class="price-ask">ご相談ください<small>価格はLINEにてご案内します</small></div>
         <ul>
           <li>ゾーン反発サインで「入る場所」を可視化（TradingView / Pine Script）</li>
           <li>SL・TPラインを自動表示。損切りに迷わない</li>
           <li>みやびEAと同じロジックで、相場観も養える</li>
           <li>導入・使い方のサポート／Discordコミュニティ</li>
         </ul>
-        <a href="#contact" class="cta">インジについて相談する<span>気になる点だけでもOK</span></a>
+        <a href="https://lin.ee/OnkS3EV" target="_blank" rel="noopener" class="cta">無料で相談する<span>気になる点だけでもOK</span></a>
       </div>
     </div>
-    <p class="price-note">※価格はすべて税込です。みおEAはみやびEA購入者向けに無料提供予定で、現在はまだ提供を開始していません。提供内容は予告なく変更となる場合があります。</p>
+    <p class="assure"><b>まずは無料でご相談ください。</b>その場でのご契約は不要です。気になる点だけでも、お気軽にどうぞ。</p>
+    <p class="price-note">※価格はLINEにて個別にご案内しています。みおEAはみやびEA購入者向けに無料提供予定で、現在はまだ提供を開始していません。提供内容は予告なく変更となる場合があります。</p>
   </div>
 </section>
 
@@ -629,6 +634,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
     <h2 class="sec-title">よくある<span class="accent">ご質問</span>。</h2>
     <div class="faq">
       <details><summary>初心者でも使えますか？</summary><div class="a">はい。導入時の設定はこちらがサポートします。パソコン操作が不安な方も、手順に沿って進めていただけます。</div></details>
+      <details><summary>料金はいくらですか？</summary><div class="a">ご状況やご希望のプランによって最適なご案内が変わるため、価格はLINEにて個別にお伝えしています。売り込みはしませんので、まずはお気軽にご相談ください。</div></details>
       <details><summary>どのくらいの資金が必要ですか？</summary><div class="a">最低2万円程度から運用を始められます。安定した運用のための推奨資金は、ご相談時に状況を伺ったうえでお伝えします。</div></details>
       <details><summary>必ず利益が出ますか？</summary><div class="a">いいえ。相場である以上、損失が出る可能性があります。元本は保証されません。記載の実績は過去の一例であり、将来の利益をお約束するものではありません。</div></details>
       <details><summary>途中でやめられますか？</summary><div class="a">はい。稼働の停止はいつでも可能です。やめたいタイミングで運用を止めていただけます。</div></details>
@@ -645,7 +651,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
     <h2 class="sec-title">まずは、話を<span class="accent">聞く</span>ところから。</h2>
     <p class="sec-lead">売り込みはしません。あなたの状況に合うかどうかを、一緒に確かめましょう。</p>
     <div class="cta-group">
-      <a href="https://lin.ee/OnkS3EV" target="_blank" rel="noopener" class="cta">LINEで相談する<span>まずは話を聞くだけでもOK</span></a>
+      <a href="https://lin.ee/OnkS3EV" target="_blank" rel="noopener" class="cta">無料で相談する<span>まずは話を聞くだけでもOK</span></a>
       <a href="https://discord.gg/NyNSrmhzsa" target="_blank" rel="noopener" class="cta cta--ghost">Discordをのぞく<span>運用の雰囲気を見てみる</span></a>
     </div>
   </div>
