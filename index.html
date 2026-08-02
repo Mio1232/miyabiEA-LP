@@ -316,17 +316,23 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
 .roles-cta{margin-top:22px;text-align:center}
 
 /* 実績チャート */
-.rec-chart{display:flex;align-items:flex-end;justify-content:center;gap:clamp(20px,8vw,72px);margin:42px 0 14px;padding:0 8px}
-.rec-col{display:flex;flex-direction:column;align-items:center;flex:0 1 130px}
-.rec-v{font-family:var(--font-display);font-weight:800;color:var(--gold);font-size:clamp(15px,2.1vw,20px);margin-bottom:10px;white-space:nowrap;line-height:1}
+.rec-chart{display:flex;align-items:flex-end;justify-content:center;gap:clamp(12px,4.5vw,48px);margin:42px 0 14px;padding:0 8px}
+.rec-col{display:flex;flex-direction:column;align-items:center;flex:0 1 118px}
+.rec-v{font-family:var(--font-display);font-weight:800;color:var(--gold);font-size:clamp(13px,1.9vw,19px);margin-bottom:10px;white-space:nowrap;line-height:1}
 .rec-v small{font-size:.5em;font-weight:600;margin-left:1px}
 .rec-v .pls{color:var(--sakura-deep)}
 .rec-track{height:168px;width:100%;display:flex;align-items:flex-end;justify-content:center}
-.rec-bar{width:min(74px,72%);min-height:8px;border-radius:12px 12px 0 0;
+.rec-bar{width:min(70px,74%);min-height:8px;border-radius:12px 12px 0 0;
   background:linear-gradient(180deg,var(--sakura),var(--gold));
   box-shadow:0 16px 32px -16px rgba(196,104,128,.5)}
 .rec-l{margin-top:14px;font-family:var(--font-display);font-weight:600;font-size:14px;color:var(--text)}
 .rec-exact{text-align:center;font-size:12px;color:var(--text-dim);margin-top:4px;line-height:1.9}
+.rec-var{margin:28px auto 0;max-width:660px;background:var(--bg-warm);border:1px solid var(--border);
+  border-radius:16px;padding:18px 24px;font-size:12.5px;color:var(--text-sub);line-height:1.9}
+.rec-var b{color:var(--gold);font-weight:600}
+.rec-var .mrow{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;font-size:12px;color:var(--text-dim)}
+.rec-var .mrow span{white-space:nowrap}
+.rec-var .mrow em{font-style:normal;color:var(--sakura-deep);font-weight:600}
 .rec-details{margin-top:32px;text-align:center}
 .rec-details>summary{cursor:pointer;list-style:none;
   display:inline-flex;align-items:center;justify-content:center;gap:11px;
@@ -391,6 +397,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
   .feat-grid{grid-template-columns:1fr}
   .statband .stat{padding:0 14px}
   .cta-group .cta{width:100%}
+  .rec-chart{gap:8px;padding:0}
+  .rec-col{flex:1 1 0}
+  .rec-v{font-size:11.5px}
+  .rec-track{height:132px}
+  .rec-l{font-size:13px}
 }
 </style>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
@@ -421,7 +432,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
         感情に左右されず、24時間あなたの代わりにトレードします。
       </p>
       <div class="stats">
-        <div class="stat"><div class="stat-v"><span class="pls">+</span>220<small>万円</small></div><div class="stat-l">4〜6月 累計実績</div></div>
+        <div class="stat"><div class="stat-v"><span class="pls">+</span>292<small>万円</small></div><div class="stat-l">4〜7月 累計実績</div></div>
         <div class="stat"><div class="stat-v">15&ndash;25<small>%</small></div><div class="stat-l">月利目安</div></div>
         <div class="stat"><div class="stat-v">2<small>万円〜</small></div><div class="stat-l">最低運用資金</div></div>
       </div>
@@ -533,17 +544,22 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
     <h2 class="sec-title">数字と、<span class="accent">動いている事実</span>を。</h2>
     <p class="sec-lead">以下は、実際の<span class="em">日次実績</span>にもとづく集計です。相場環境により結果は変動し、将来の利益を保証するものではありません。</p>
     <div class="statband">
-      <div class="stat"><div class="stat-v"><span class="pls">+</span>220<small>万円</small></div><div class="stat-l">4〜6月 累計実績（+2,202,940円）</div></div>
+      <div class="stat"><div class="stat-v"><span class="pls">+</span>292<small>万円</small></div><div class="stat-l">4〜7月 累計実績（+2,926,857円）</div></div>
+      <div class="stat"><div class="stat-v">65<small>営業日</small></div><div class="stat-l">日平均 +45,028円</div></div>
       <div class="stat"><div class="stat-v">15&ndash;25<small>%</small></div><div class="stat-l">月利目安</div></div>
-      <div class="stat"><div class="stat-v">2<small>万円〜</small></div><div class="stat-l">最低運用資金</div></div>
     </div>
     <div class="rec-chart">
-      <div class="rec-col"><div class="rec-v"><span class="pls">+</span>32.9<small>万円</small></div><div class="rec-track"><div class="rec-bar" style="height:32%"></div></div><div class="rec-l">4月</div></div><div class="rec-col"><div class="rec-v"><span class="pls">+</span>101.6<small>万円</small></div><div class="rec-track"><div class="rec-bar" style="height:100%"></div></div><div class="rec-l">5月</div></div><div class="rec-col"><div class="rec-v"><span class="pls">+</span>85.8<small>万円</small></div><div class="rec-track"><div class="rec-bar" style="height:85%"></div></div><div class="rec-l">6月</div></div>
+      <div class="rec-col"><div class="rec-v"><span class="pls">+</span>32.9<small>万円</small></div><div class="rec-track"><div class="rec-bar" style="height:32%"></div></div><div class="rec-l">4月</div></div><div class="rec-col"><div class="rec-v"><span class="pls">+</span>101.6<small>万円</small></div><div class="rec-track"><div class="rec-bar" style="height:100%"></div></div><div class="rec-l">5月</div></div><div class="rec-col"><div class="rec-v"><span class="pls">+</span>93.8<small>万円</small></div><div class="rec-track"><div class="rec-bar" style="height:92%"></div></div><div class="rec-l">6月</div></div><div class="rec-col"><div class="rec-v"><span class="pls">+</span>64.4<small>万円</small></div><div class="rec-track"><div class="rec-bar" style="height:63%"></div></div><div class="rec-l">7月</div></div>
     </div>
-    <p class="rec-exact">4月 +328,897円 ／ 5月 +1,015,616円 ／ 6月 +858,427円</p>
+    <p class="rec-exact">4月 +328,897円（4営業日）／ 5月 +1,015,616円 ／ 6月 +938,067円 ／ 7月 +644,277円</p>
+    <div class="rec-var">
+      <b>月利は、相場環境によって変動します。</b><br>
+      記載の15〜25%はあくまで目安です。ゴールドの値動きが穏やかな月は取れる幅も小さくなり、目安を下回ることがあります。実際、4〜7月も月ごとに差がありました（運用資金500万円で換算した場合）。
+      <div class="mrow"><span>5月 <em>約20%</em></span><span>6月 <em>約19%</em></span><span>7月 <em>約13%</em></span><span>※4月は4営業日のみのため除外</span></div>
+    </div>
     <details class="rec-details">
-      <summary>日次の実績をすべて見る（全42営業日）</summary>
-      <div class="rec-month-h">4月　合計 +328,897円</div><div class="rec-grid"><div class="rec-chip"><span class="d">4/27</span><b>+38,494</b></div><div class="rec-chip"><span class="d">4/28</span><b>+130,062</b></div><div class="rec-chip"><span class="d">4/29</span><b>+84,724</b></div><div class="rec-chip"><span class="d">4/30</span><b>+75,617</b></div></div><div class="rec-month-h">5月　合計 +1,015,616円</div><div class="rec-grid"><div class="rec-chip"><span class="d">5/1</span><b>+53,965</b></div><div class="rec-chip"><span class="d">5/5</span><b>+42,495</b></div><div class="rec-chip"><span class="d">5/6</span><b>+205,038</b></div><div class="rec-chip"><span class="d">5/7</span><b>+84,188</b></div><div class="rec-chip"><span class="d">5/8</span><b>+65,044</b></div><div class="rec-chip"><span class="d">5/11</span><b>+41,128</b></div><div class="rec-chip"><span class="d">5/12</span><b>+41,979</b></div><div class="rec-chip"><span class="d">5/13</span><b>+21,139</b></div><div class="rec-chip"><span class="d">5/14</span><b>+29,255</b></div><div class="rec-chip"><span class="d">5/15</span><b>+61,803</b></div><div class="rec-chip"><span class="d">5/18</span><b>+66,890</b></div><div class="rec-chip"><span class="d">5/19</span><b>+48,772</b></div><div class="rec-chip"><span class="d">5/20</span><b>+39,746</b></div><div class="rec-chip"><span class="d">5/21</span><b>+29,788</b></div><div class="rec-chip"><span class="d">5/22</span><b>+15,304</b></div><div class="rec-chip"><span class="d">5/25</span><b>+13,043</b></div><div class="rec-chip"><span class="d">5/26</span><b>+29,978</b></div><div class="rec-chip"><span class="d">5/27</span><b>+39,657</b></div><div class="rec-chip"><span class="d">5/28</span><b>+41,925</b></div><div class="rec-chip"><span class="d">5/29</span><b>+44,479</b></div></div><div class="rec-month-h">6月　合計 +858,427円</div><div class="rec-grid"><div class="rec-chip"><span class="d">6/2</span><b>+24,986</b></div><div class="rec-chip"><span class="d">6/3</span><b>+25,263</b></div><div class="rec-chip"><span class="d">6/4</span><b>+19,181</b></div><div class="rec-chip"><span class="d">6/5</span><b>+27,809</b></div><div class="rec-chip"><span class="d">6/8</span><b>+8,026</b></div><div class="rec-chip"><span class="d">6/9</span><b>+60,650</b></div><div class="rec-chip"><span class="d">6/10</span><b>+92,956</b></div><div class="rec-chip"><span class="d">6/11</span><b>+90,654</b></div><div class="rec-chip"><span class="d">6/12</span><b>+68,934</b></div><div class="rec-chip"><span class="d">6/15</span><b>+27,072</b></div><div class="rec-chip"><span class="d">6/16</span><b>+16,360</b></div><div class="rec-chip"><span class="d">6/17</span><b>+43,280</b></div><div class="rec-chip"><span class="d">6/18</span><b>+50,259</b></div><div class="rec-chip"><span class="d">6/19</span><b>+74,871</b></div><div class="rec-chip"><span class="d">6/22</span><b>+43,161</b></div><div class="rec-chip"><span class="d">6/23</span><b>+43,814</b></div><div class="rec-chip"><span class="d">6/24</span><b>+76,922</b></div><div class="rec-chip"><span class="d">6/25</span><b>+64,229</b></div></div>
+      <summary>日次の実績をすべて見る（全65営業日）</summary>
+      <div class="rec-month-h">4月　合計 +328,897円（4営業日）</div><div class="rec-grid"><div class="rec-chip"><span class="d">4/27</span><b>+38,494</b></div><div class="rec-chip"><span class="d">4/28</span><b>+130,062</b></div><div class="rec-chip"><span class="d">4/29</span><b>+84,724</b></div><div class="rec-chip"><span class="d">4/30</span><b>+75,617</b></div></div><div class="rec-month-h">5月　合計 +1,015,616円（20営業日）</div><div class="rec-grid"><div class="rec-chip"><span class="d">5/1</span><b>+53,965</b></div><div class="rec-chip"><span class="d">5/5</span><b>+42,495</b></div><div class="rec-chip"><span class="d">5/6</span><b>+205,038</b></div><div class="rec-chip"><span class="d">5/7</span><b>+84,188</b></div><div class="rec-chip"><span class="d">5/8</span><b>+65,044</b></div><div class="rec-chip"><span class="d">5/11</span><b>+41,128</b></div><div class="rec-chip"><span class="d">5/12</span><b>+41,979</b></div><div class="rec-chip"><span class="d">5/13</span><b>+21,139</b></div><div class="rec-chip"><span class="d">5/14</span><b>+29,255</b></div><div class="rec-chip"><span class="d">5/15</span><b>+61,803</b></div><div class="rec-chip"><span class="d">5/18</span><b>+66,890</b></div><div class="rec-chip"><span class="d">5/19</span><b>+48,772</b></div><div class="rec-chip"><span class="d">5/20</span><b>+39,746</b></div><div class="rec-chip"><span class="d">5/21</span><b>+29,788</b></div><div class="rec-chip"><span class="d">5/22</span><b>+15,304</b></div><div class="rec-chip"><span class="d">5/25</span><b>+13,043</b></div><div class="rec-chip"><span class="d">5/26</span><b>+29,978</b></div><div class="rec-chip"><span class="d">5/27</span><b>+39,657</b></div><div class="rec-chip"><span class="d">5/28</span><b>+41,925</b></div><div class="rec-chip"><span class="d">5/29</span><b>+44,479</b></div></div><div class="rec-month-h">6月　合計 +938,067円（20営業日）</div><div class="rec-grid"><div class="rec-chip"><span class="d">6/2</span><b>+24,986</b></div><div class="rec-chip"><span class="d">6/3</span><b>+25,263</b></div><div class="rec-chip"><span class="d">6/4</span><b>+19,181</b></div><div class="rec-chip"><span class="d">6/5</span><b>+27,809</b></div><div class="rec-chip"><span class="d">6/8</span><b>+8,026</b></div><div class="rec-chip"><span class="d">6/9</span><b>+60,650</b></div><div class="rec-chip"><span class="d">6/10</span><b>+92,956</b></div><div class="rec-chip"><span class="d">6/11</span><b>+90,654</b></div><div class="rec-chip"><span class="d">6/12</span><b>+68,934</b></div><div class="rec-chip"><span class="d">6/15</span><b>+27,072</b></div><div class="rec-chip"><span class="d">6/16</span><b>+16,360</b></div><div class="rec-chip"><span class="d">6/17</span><b>+43,280</b></div><div class="rec-chip"><span class="d">6/18</span><b>+50,259</b></div><div class="rec-chip"><span class="d">6/19</span><b>+74,871</b></div><div class="rec-chip"><span class="d">6/22</span><b>+43,161</b></div><div class="rec-chip"><span class="d">6/23</span><b>+43,814</b></div><div class="rec-chip"><span class="d">6/24</span><b>+76,922</b></div><div class="rec-chip"><span class="d">6/25</span><b>+64,229</b></div><div class="rec-chip"><span class="d">6/29</span><b>+33,180</b></div><div class="rec-chip"><span class="d">6/30</span><b>+46,460</b></div></div><div class="rec-month-h">7月　合計 +644,277円（21営業日）</div><div class="rec-grid"><div class="rec-chip"><span class="d">7/1</span><b>+119,440</b></div><div class="rec-chip"><span class="d">7/2</span><b>+19,626</b></div><div class="rec-chip"><span class="d">7/3</span><b>+30,860</b></div><div class="rec-chip"><span class="d">7/7</span><b>+37,919</b></div><div class="rec-chip"><span class="d">7/8</span><b>+51,053</b></div><div class="rec-chip"><span class="d">7/9</span><b>+27,835</b></div><div class="rec-chip"><span class="d">7/10</span><b>+11,170</b></div><div class="rec-chip"><span class="d">7/13</span><b>+41,165</b></div><div class="rec-chip"><span class="d">7/14</span><b>+23,885</b></div><div class="rec-chip"><span class="d">7/15</span><b>+21,700</b></div><div class="rec-chip"><span class="d">7/16</span><b>+32,845</b></div><div class="rec-chip"><span class="d">7/17</span><b>+18,711</b></div><div class="rec-chip"><span class="d">7/20</span><b>+20,400</b></div><div class="rec-chip"><span class="d">7/21</span><b>+14,996</b></div><div class="rec-chip"><span class="d">7/22</span><b>+15,943</b></div><div class="rec-chip"><span class="d">7/23</span><b>+28,091</b></div><div class="rec-chip"><span class="d">7/24</span><b>+13,929</b></div><div class="rec-chip"><span class="d">7/27</span><b>+17,703</b></div><div class="rec-chip"><span class="d">7/28</span><b>+20,623</b></div><div class="rec-chip"><span class="d">7/29</span><b>+39,117</b></div><div class="rec-chip"><span class="d">7/30</span><b>+37,266</b></div></div>
     </details>
     <div class="video">
       <iframe src="https://www.youtube.com/embed/KxSKFMA3zKE" title="みやびEA 稼働の様子" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -634,6 +650,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
     <h2 class="sec-title">よくある<span class="accent">ご質問</span>。</h2>
     <div class="faq">
       <details><summary>初心者でも使えますか？</summary><div class="a">はい。導入時の設定はこちらがサポートします。パソコン操作が不安な方も、手順に沿って進めていただけます。</div></details>
+      <details><summary>毎月おなじくらいの利益が出ますか？</summary><div class="a">いいえ。月利は相場環境によって変動します。ゴールドの値動きが大きい月は伸びやすく、穏やかな月は取れる幅が小さくなります。実際に4〜7月の実績でも、月ごとに差が出ています。記載の月利目安15〜25%は、あくまで目安としてご覧ください。</div></details>
       <details><summary>料金はいくらですか？</summary><div class="a">ご状況やご希望のプランによって最適なご案内が変わるため、価格はLINEにて個別にお伝えしています。売り込みはしませんので、まずはお気軽にご相談ください。</div></details>
       <details><summary>どのくらいの資金が必要ですか？</summary><div class="a">最低2万円程度から運用を始められます。安定した運用のための推奨資金は、ご相談時に状況を伺ったうえでお伝えします。</div></details>
       <details><summary>必ず利益が出ますか？</summary><div class="a">いいえ。相場である以上、損失が出る可能性があります。元本は保証されません。記載の実績は過去の一例であり、将来の利益をお約束するものではありません。</div></details>
