@@ -283,7 +283,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
 .step p{font-size:13.5px;color:var(--text-sub);line-height:1.85}
 
 /* 料金 */
-.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px;margin-top:46px;align-items:start}
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:46px;align-items:start}
 .plan{position:relative;background:var(--bg);border:1px solid var(--border);border-radius:22px;
   padding:38px 30px 32px;box-shadow:0 20px 46px -34px rgba(120,90,70,.5)}
 .plan--feat{border-color:var(--border-sakura);box-shadow:0 26px 60px -32px rgba(196,104,128,.42)}
@@ -312,6 +312,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
 .role .risk{margin-top:18px;padding-top:14px;border-top:1px solid var(--border);font-size:11.5px;color:var(--text-dim);display:flex;gap:8px;align-items:center}
 .role .risk b{font-weight:600;color:var(--text-sub)}
 .badge{display:inline-block;margin-left:7px;font-size:10px;font-weight:600;letter-spacing:.03em;color:var(--gold);border:1px solid rgba(184,146,46,.45);border-radius:20px;padding:1px 9px;vertical-align:middle;line-height:1.6;white-space:nowrap}
+@media(min-width:900px){.roles{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:899px){.roles{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto}}
+.rrec{margin-top:14px;font-size:12px;color:var(--text-sub);background:var(--bg-warm);border-radius:10px;padding:8px 12px}
+.rrec b{color:var(--sakura-deep);font-weight:700}
+.roles-sub{text-align:center;font-size:11.5px;color:var(--text-dim);margin-top:8px}
 .roles-flow{text-align:center;margin-top:30px;font-size:13.5px;color:var(--text-sub);line-height:1.9}
 .roles-cta{margin-top:22px;text-align:center}
 
@@ -358,6 +363,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
   font-size:12px;color:var(--text);display:flex;justify-content:space-between;gap:6px;align-items:baseline}
 .rec-chip .d{color:var(--text-dim);font-size:11px}
 .rec-chip b{color:var(--sakura-deep);font-weight:600;white-space:nowrap}
+@media(min-width:960px){.price-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:600px) and (max-width:959px){.price-grid{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto}}
 .price-note{font-size:11.5px;color:var(--text-dim);margin-top:24px;text-align:center}
 .price-ask{font-family:var(--font-display);font-weight:700;color:var(--sakura-deep);font-size:clamp(19px,2.4vw,25px);margin:18px 0 2px;line-height:1.35}
 .price-ask small{display:block;font-size:.52em;font-weight:600;color:var(--text-dim);margin-top:7px;letter-spacing:.02em}
@@ -405,6 +412,28 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
   .rec-track{height:132px}
   .rec-l{font-size:13px}
 }
+/* アップデート告知 */
+.upd-badge{display:inline-flex;align-items:center;gap:10px;margin:0 0 18px;padding:7px 16px 7px 7px;border-radius:40px;
+  background:#fff;border:1px solid var(--border-sakura);text-decoration:none;color:var(--text);font-size:12.5px;font-weight:600;
+  box-shadow:0 10px 24px -16px rgba(196,104,128,.6);transition:transform .25s,border-color .25s}
+.upd-badge:hover{transform:translateY(-2px);border-color:var(--sakura)}
+.upd-badge .new{background:linear-gradient(135deg,var(--sakura-deep),var(--gold));color:#fff;font-size:10.5px;letter-spacing:.12em;
+  padding:4px 10px;border-radius:20px;font-family:var(--font-display)}
+.upd-badge .arr{color:var(--gold);font-size:11px}
+.upd-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:36px 0 18px}
+.upd-step{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:22px 20px;position:relative}
+.upd-step .n{font-family:var(--font-display);font-weight:800;color:var(--gold);font-size:12px;letter-spacing:.12em}
+.upd-step h3{font-family:var(--font-display);font-size:16px;margin:8px 0 6px;color:var(--text)}
+.upd-step p{font-size:12.5px;color:var(--text-sub);line-height:1.85;margin:0}
+.upd-modes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.upd-mode{border-radius:16px;padding:20px 22px;font-size:13px;line-height:1.85;color:var(--text-sub)}
+.upd-mode b{display:block;font-family:var(--font-display);font-size:14.5px;margin-bottom:4px}
+.upd-mode--calm{background:var(--bg-warm);border:1px solid var(--border)}
+.upd-mode--calm b{color:var(--gold)}
+.upd-mode--wild{background:var(--sakura-pale);border:1px solid var(--border-sakura)}
+.upd-mode--wild b{color:var(--sakura-deep)}
+.upd-note{font-size:11.5px;color:var(--text-dim);line-height:1.9;margin-top:22px;text-align:center}
+@media(max-width:720px){.upd-steps,.upd-modes{grid-template-columns:1fr}}
 </style>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
@@ -424,6 +453,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
         <span class="label">mio億トレ &times; みやびEA</span>
         <span class="rule"></span>
       </div>
+      <a href="#update" class="upd-badge"><span class="new">NEW</span>ボラティリティ自動判定機能を搭載<span class="arr">▶</span></a>
       <h1>
         <span class="ln l1"><span>仕事中も、寝ている間も。</span></span>
         <span class="ln l2"><span>あなたの代わりに、</span></span>
@@ -491,7 +521,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
   <div class="wrap reveal">
     <div class="eyebrow"><span class="label">SOLID SERIES</span><span class="rule"></span></div>
     <h2 class="sec-title">「作る・増やす・守る」で、<br><span class="accent">資産を育てる</span>。</h2>
-    <p class="sec-lead">みやびEAが担うのは、3つの役割のうち「増やす」。攻めのインジで資金をつくり、みやびEAで増やし、みおEAで守る。役割を分けることで、資産は安定して育っていきます。</p>
+    <p class="sec-lead">みやびEAが担うのは、3つの役割のうち「増やす」。攻めのインジで資金をつくり、みやびEAで増やし、JP225EAで守る。役割を分けることで、資産は安定して育っていきます。</p>
     <div class="roles">
       <div class="role">
         <div class="rstep">01 ── 作る</div>
@@ -509,13 +539,20 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
       </div>
       <div class="role">
         <div class="rstep">03 ── 守る</div>
-        <div class="rname">みおEA<span class="badge">近日提供</span></div>
+        <div class="rname">JP225EA<span class="badge">提供中</span></div>
         <div class="rrole">自動売買・土台</div>
-        <p>月利2〜5%で、増えた利益を取り崩さず複利で積み上げる「守りの土台」。減らさず育てる設計です。</p>
+        <p>日経225（JP225）を対象にした自動売買。月利目安5%前後で、ゴールドとは別の値動きに資金を分け、増えた利益をコツコツ積み上げる「守りの土台」です。</p>
+        <div class="rrec">8月〜10/2 実績 <b>+235,403円</b>（45営業日）</div>
         <div class="risk"><b>リスク</b>低（守り）</div>
       </div>
     </div>
     <p class="roles-flow">作る → 増やす → 守る の循環で、守りの土台がどんどん厚くなっていきます。</p>
+    <p class="roles-sub">※みおEAは現在準備中です。提供時期が決まり次第お知らせします。</p>
+    <details class="rec-details">
+      <summary>JP225EAの日次実績を見る（全45営業日）</summary>
+      <p class="rec-exact" style="margin-top:18px">8月〜10/2 累計 +235,403円 ／ 日平均 +5,231円</p>
+      <div class="rec-month-h">8月　合計 +137,143円（21営業日）</div><div class="rec-grid"><div class="rec-chip"><span class="d">8/3</span><b>+9,440</b></div><div class="rec-chip"><span class="d">8/4</span><b>+13,494</b></div><div class="rec-chip"><span class="d">8/5</span><b>+30,449</b></div><div class="rec-chip"><span class="d">8/6</span><b>+4,354</b></div><div class="rec-chip"><span class="d">8/7</span><b>+2,634</b></div><div class="rec-chip"><span class="d">8/10</span><b>+1,088</b></div><div class="rec-chip"><span class="d">8/11</span><b>+4,870</b></div><div class="rec-chip"><span class="d">8/12</span><b>+1,627</b></div><div class="rec-chip"><span class="d">8/13</span><b>+1,607</b></div><div class="rec-chip"><span class="d">8/14</span><b>+16,073</b></div><div class="rec-chip"><span class="d">8/17</span><b>+1,291</b></div><div class="rec-chip"><span class="d">8/18</span><b>+3,331</b></div><div class="rec-chip"><span class="d">8/19</span><b>+15,234</b></div><div class="rec-chip"><span class="d">8/20</span><b>+5,619</b></div><div class="rec-chip"><span class="d">8/21</span><b>+3,015</b></div><div class="rec-chip"><span class="d">8/24</span><b>+3,094</b></div><div class="rec-chip"><span class="d">8/25</span><b>+2,791</b></div><div class="rec-chip"><span class="d">8/26</span><b>+2,418</b></div><div class="rec-chip"><span class="d">8/27</span><b>+4,731</b></div><div class="rec-chip"><span class="d">8/28</span><b>+4,985</b></div><div class="rec-chip"><span class="d">8/31</span><b>+4,998</b></div></div><div class="rec-month-h">9月　合計 +81,705円（22営業日）</div><div class="rec-grid"><div class="rec-chip"><span class="d">9/1</span><b>+3,350</b></div><div class="rec-chip"><span class="d">9/2</span><b>+3,457</b></div><div class="rec-chip"><span class="d">9/3</span><b>+3,444</b></div><div class="rec-chip"><span class="d">9/4</span><b>+2,072</b></div><div class="rec-chip"><span class="d">9/7</span><b>+1,106</b></div><div class="rec-chip"><span class="d">9/8</span><b>+5,257</b></div><div class="rec-chip"><span class="d">9/9</span><b>+2,508</b></div><div class="rec-chip"><span class="d">9/10</span><b>+2,236</b></div><div class="rec-chip"><span class="d">9/11</span><b>+5,291</b></div><div class="rec-chip"><span class="d">9/14</span><b>+16,503</b></div><div class="rec-chip"><span class="d">9/15</span><b>+3,904</b></div><div class="rec-chip"><span class="d">9/16</span><b>+3,876</b></div><div class="rec-chip"><span class="d">9/17</span><b>+3,551</b></div><div class="rec-chip"><span class="d">9/18</span><b>+3,264</b></div><div class="rec-chip"><span class="d">9/21</span><b>+2,097</b></div><div class="rec-chip"><span class="d">9/22</span><b>+3,499</b></div><div class="rec-chip"><span class="d">9/23</span><b>+1,311</b></div><div class="rec-chip"><span class="d">9/24</span><b>+1,200</b></div><div class="rec-chip"><span class="d">9/25</span><b>+2,421</b></div><div class="rec-chip"><span class="d">9/28</span><b>+5,854</b></div><div class="rec-chip"><span class="d">9/29</span><b>+3,648</b></div><div class="rec-chip"><span class="d">9/30</span><b>+1,856</b></div></div><div class="rec-month-h">10月　合計 +16,555円（2営業日）・10/2時点</div><div class="rec-grid"><div class="rec-chip"><span class="d">10/1</span><b>+14,569</b></div><div class="rec-chip"><span class="d">10/2</span><b>+1,986</b></div></div>
+    </details>
     <div class="roles-cta">
       <a href="https://okutoreflow.netlify.app/" target="_blank" rel="noopener" class="cta cta--ghost">ソリッドシリーズの詳細を見る<span>資産推移シミュレーションも</span></a>
     </div>
@@ -539,12 +576,31 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
   </div>
 </section>
 
+<!-- ===== アップデート ===== -->
+<section class="sec sec--seal" id="update">
+  <div class="wrap wrap--narrow reveal">
+    <div class="eyebrow"><span class="label">UPDATE &nbsp;·&nbsp; 2026.10</span><span class="rule"></span></div>
+    <h2 class="sec-title">相場が荒れたら、<br><span class="accent">自分で守りに入る</span>。</h2>
+    <p class="sec-lead">みやびEAに、新しく「ボラティリティ自動判定機能」を搭載しました。テーマはリスク管理の強化。急な値動きを自動で察知し、取引の設定をその場で切り替えます。</p>
+    <div class="upd-steps">
+      <div class="upd-step"><div class="n">STEP 01</div><h3>値動きを測る</h3><p>ゴールドの値動きの大きさ（ボラティリティ）を、EAが常に監視します。</p></div>
+      <div class="upd-step"><div class="n">STEP 02</div><h3>相場の状態を判定</h3><p>穏やかな相場か、荒れている相場かを自動で見分けます。</p></div>
+      <div class="upd-step"><div class="n">STEP 03</div><h3>設定を自動で切り替え</h3><p>判定に合わせて、ナンピンの幅とロットの倍率を自動で調整します。</p></div>
+    </div>
+    <div class="upd-modes">
+      <div class="upd-mode upd-mode--calm"><b>穏やかな相場のとき</b>通常の設定で、いつも通りコツコツ稼働します。</div>
+      <div class="upd-mode upd-mode--wild"><b>荒れた相場のとき</b>ナンピンの間隔を広げ、ロットの増え方を抑えて、急変動に巻き込まれにくくします。</div>
+    </div>
+    <p class="upd-note">※本機能は損失の発生を防ぐことを保証するものではありません。相場の急変の程度によっては損失が出る場合があります。<br>※下記の実績（4月〜10/2）は、本アップデート前のバージョンによるものです。</p>
+  </div>
+</section>
+
 <!-- ===== 実績 ===== -->
 <section class="sec sec--seal">
   <div class="wrap reveal">
     <div class="eyebrow"><span class="label">TRACK RECORD</span><span class="rule"></span></div>
     <h2 class="sec-title">数字と、<span class="accent">動いている事実</span>を。</h2>
-    <p class="sec-lead">以下は、実際の<span class="em">日次実績</span>にもとづく集計です。相場環境により結果は変動し、将来の利益を保証するものではありません。</p>
+    <p class="sec-lead">以下は、実際の<span class="em">日次実績</span>にもとづく集計です。相場環境により結果は変動し、将来の利益を保証するものではありません。<br><small style="color:var(--text-dim)">※10/2までの実績は、ボラティリティ自動判定機能を搭載する前のバージョンによるものです。</small></p>
     <div class="statband">
       <div class="stat"><div class="stat-v"><span class="pls">+</span>448<small>万円</small></div><div class="stat-l">4月〜10/2 累計実績（+4,481,229円）</div></div>
       <div class="stat"><div class="stat-v">109<small>営業日</small></div><div class="stat-l">日平均 +41,112円</div></div>
@@ -612,7 +668,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
   <div class="wrap reveal">
     <div class="eyebrow"><span class="label">PRICING</span><span class="rule"></span></div>
     <h2 class="sec-title">必要なぶんだけ、<span class="accent">シンプルに</span>。</h2>
-    <p class="sec-lead">みやびEAをご購入の方には、<span class="em">みおEA</span>を無料でお渡しします（近日提供）。インジケーターは単体でもご利用いただけます。</p>
+    <p class="sec-lead">みやびEAをご購入の方には、<span class="em">みおEA</span>を無料でお渡しします（準備中）。JP225EAとインジケーターは、単体でもご利用いただけます。</p>
     <div class="price-grid">
       <div class="plan plan--feat">
         <div class="ribbon">EA本体</div>
@@ -621,11 +677,23 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);
         <div class="price-ask">ご相談ください<small>価格はLINEにてご案内します</small></div>
         <ul>
           <li>みやびEA 本体（XAUUSD自動売買）</li>
-          <li>みおEA<span class="badge">近日提供・購入者は無料</span></li>
+          <li>みおEA<span class="badge">準備中・購入者は無料</span></li>
           <li>初期設定の導入サポート</li>
           <li>Discordコミュニティへの参加</li>
         </ul>
         <a href="https://lin.ee/OnkS3EV" target="_blank" rel="noopener" class="cta">無料で相談する<span>まずは話を聞くだけでもOK</span></a>
+      </div>
+      <div class="plan">
+        <div class="pname">JP225EA</div>
+        <div class="psub">日経225（JP225）を対象にした「守り」の自動売買EA。月利目安5%前後です。</div>
+        <div class="price-ask">ご相談ください<small>価格はLINEにてご案内します</small></div>
+        <ul>
+          <li>JP225EA 本体（日経225自動売買）</li>
+          <li>ゴールドとは別の値動きに資金を分散</li>
+          <li>初期設定の導入サポート</li>
+          <li>Discordコミュニティへの参加</li>
+        </ul>
+        <a href="https://lin.ee/OnkS3EV" target="_blank" rel="noopener" class="cta">無料で相談する<span>気になる点だけでもOK</span></a>
       </div>
       <div class="plan">
         <div class="pname">Solid Edge インジケーター</div>
